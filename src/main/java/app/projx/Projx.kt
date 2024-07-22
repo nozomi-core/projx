@@ -1,5 +1,5 @@
 package app.projx
 
-fun main() {
-    println("Hello projx")
+fun main(args: Array<String>) {
+    println("Hello projx: ${args.getOrElse(0, {""})}")
 }

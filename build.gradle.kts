@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "org.example"
-version = "1.0-SNAPSHOT"
+version = "0.1.0"
 
 repositories {
     mavenCentral()
@@ -25,4 +25,17 @@ tasks.test {
 
 application {
     mainClass.set("app.projx.ProjxKt")
+}
+
+tasks.register<Jar>("packageFatJar") {
+    manifest {
+        attributes["Main-Class"] = "app.projx.ProjxKt"
+    }
+    archiveBaseName.set("projx-fat")
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from({
+        configurations.runtimeClasspath.get().filter { it.isDirectory }.map { it } +
+                configurations.runtimeClasspath.get().filter { it.isFile }.map { zipTree(it) }
+    })
+    with(tasks.named<Jar>("jar").get())
 }
