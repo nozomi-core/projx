@@ -4,6 +4,8 @@ import app.projx.core.SubProgram
 import app.projx.programs.create.CreateProgram
 import app.projx.programs.dir.DirProgram
 import app.projx.programs.help.HelpProgram
+import app.projx.programs.here.HereProgram
+import app.projx.programs.readme.ReadmeProgram
 import app.projx.programs.where.WhereProgram
 
 class ProgramRegister {
@@ -14,6 +16,8 @@ class ProgramRegister {
         add("create", CreateProgram())
         add("dir", DirProgram())
         add("where", WhereProgram())
+        add("readme", ReadmeProgram())
+        add("here", HereProgram())
     }
 
     private fun add(name: String, program: SubProgram) {
