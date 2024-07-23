@@ -1,11 +1,11 @@
-package app.projx.programs.readme
+package app.projx.programs
 
-import app.projx.core.AppContext
-import app.projx.core.SubProgram
+import app.projx.core.CliContext
+import app.projx.core.CliProgram
 
 
-class ReadmeProgram: SubProgram {
-    override fun execute(context: AppContext) {
+class ReadmeProgram: CliProgram {
+    override fun execute(context: CliContext, args: Array<String>) {
         val input = javaClass.getResourceAsStream("/readme.txt")
 
         input?.bufferedReader()?.use {

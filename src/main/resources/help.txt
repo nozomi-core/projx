@@ -3,3 +3,7 @@ command list
 
 
 open: Opens the currently set project
+
+
+
+todo: adds a new todo item to list

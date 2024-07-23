@@ -1,10 +1,10 @@
-package app.projx.programs.help
+package app.projx.programs
 
-import app.projx.core.AppContext
-import app.projx.core.SubProgram
+import app.projx.core.CliContext
+import app.projx.core.CliProgram
 
-class HelpProgram: SubProgram {
-    override fun execute(context: AppContext) {
+class HelpProgram: CliProgram {
+    override fun execute(context: CliContext, args: Array<String>) {
         val input = javaClass.getResourceAsStream("/help.txt")
 
         input?.bufferedReader()?.use {
