@@ -7,9 +7,29 @@ import app.projx.programs.ProgramRegister
 import java.io.File
 
 fun main(args: Array<String>) {
-    val programs = ProgramRegister()
-    val programName = args.getOrElse(0) { "" }
+    var isRunning = true
 
+    if(args.getOrNull(0) == "shell") {
+        while(isRunning) {
+            print("pro >> ")
+            val shellArgs = readLine()!!.split("\\s+").toMutableList().toTypedArray()
+
+            val doExit = shellArgs.getOrNull(0) == "exit"
+            if(doExit) {
+                isRunning = false
+            } else {
+                runCommand(shellArgs)
+            }
+        }
+    } else {
+        runCommand(args)
+    }
+}
+
+fun runCommand(args: Array<String>) {
+    val programs = ProgramRegister()
+
+    val programName = args.getOrElse(0) { "" }
     programs.get(programName)?.apply {
         execute(createAppContext())
     }
