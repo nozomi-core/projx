@@ -7,6 +7,10 @@ import app.projx.programs.ProgramRegister
 import java.io.File
 
 fun main(args: Array<String>) {
+    //init the cli application, which checks the file system to ensure it's in a correct state
+    val context = createAppContext()
+    projxInit(context)
+
     var isRunning = true
 
     if(args.getOrNull(0) == "shell") {
@@ -18,20 +22,20 @@ fun main(args: Array<String>) {
             if(doExit) {
                 isRunning = false
             } else {
-                runCommand(shellArgs)
+                runCommand(context, shellArgs)
             }
         }
     } else {
-        runCommand(args)
+        runCommand(context, args)
     }
 }
 
-fun runCommand(args: Array<String>) {
+fun runCommand(context: AppContext, args: Array<String>) {
     val programs = ProgramRegister()
 
     val programName = args.getOrElse(0) { "" }
     programs.get(programName)?.apply {
-        execute(createAppContext())
+        execute(context)
     }
 }
 

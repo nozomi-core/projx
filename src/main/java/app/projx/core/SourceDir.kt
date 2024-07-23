@@ -1,3 +1,10 @@
 package app.projx.core
 
-class SourceDir(val dir: String)
+import java.io.File
+
+class SourceDir(val dir: String) {
+
+    fun getFile(name: String): File {
+        return File(dir, name)
+    }
+}

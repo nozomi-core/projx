@@ -5,6 +5,12 @@ import app.projx.core.SubProgram
 
 class HelpProgram: SubProgram {
     override fun execute(context: AppContext) {
-        println("running help")
+        val input = javaClass.getResourceAsStream("/help.txt")
+
+        input?.bufferedReader()?.use {
+            it.forEachLine { line ->
+                println(line)
+            }
+        }
     }
 }
