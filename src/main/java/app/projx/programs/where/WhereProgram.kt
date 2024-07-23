@@ -1,10 +1,10 @@
-package app.projx.programs.help
+package app.projx.programs.where
 
 import app.projx.core.AppContext
 import app.projx.core.SubProgram
 
-class HelpProgram: SubProgram {
+class WhereProgram: SubProgram {
     override fun execute(context: AppContext) {
-        println("running help")
+        println(context.srcDir.dir)
     }
 }

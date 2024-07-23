@@ -40,8 +40,8 @@ tasks.register<Jar>("packageFatJar") {
     with(tasks.named<Jar>("jar").get())
 }
 
-tasks.register<JavaExec>("projx-help") {
+tasks.register<JavaExec>("projx-test") {
     mainClass.set("app.projx.ProjxKt")
     classpath = sourceSets["main"].runtimeClasspath
-    args = listOf("help")
+    args = listOf("dir")
 }

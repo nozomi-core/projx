@@ -1,5 +1,5 @@
 package app.projx.core
 
 interface SubProgram {
-    fun execute()
+    fun execute(context: AppContext)
 }

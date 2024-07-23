@@ -1,4 +1,6 @@
 package app.projx.core
 
-class AppContext {
-}
+class AppContext(
+    val cwd: Cwd,
+    val srcDir: SourceDir
+)
