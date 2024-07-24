@@ -5,9 +5,9 @@ import app.projx.core.CliProgram
 import app.projx.core.database.VarKeys
 import app.projx.core.database.repo.VarsRepository
 
-class WhereProgram: CliProgram {
+class AndroidProgram: CliProgram {
     override fun execute(context: CliContext, args: Array<String>) {
         val path =  VarsRepository.queryKey(VarKeys.CURRENT_PROJECT_PATH)
-        println(path)
+        Runtime.getRuntime().exec("cmd /c studio64 $path")
     }
 }

@@ -5,9 +5,9 @@ import app.projx.core.CliProgram
 import app.projx.core.database.VarKeys
 import app.projx.core.database.repo.VarsRepository
 
-class WhereProgram: CliProgram {
+class GoToProgram: CliProgram {
     override fun execute(context: CliContext, args: Array<String>) {
-        val path =  VarsRepository.queryKey(VarKeys.CURRENT_PROJECT_PATH)
-        println(path)
+        val path = VarsRepository.queryKey(VarKeys.CURRENT_PROJECT_PATH)
+        Runtime.getRuntime().exec("wt -d $path")
     }
 }

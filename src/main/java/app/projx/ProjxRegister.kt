@@ -1,17 +1,7 @@
 package app.projx
 
 import app.projx.core.CliProgram
-import app.projx.programs.CodeProgram
-import app.projx.programs.CreateProgram
-import app.projx.programs.DirProgram
-import app.projx.programs.FileProgram
-import app.projx.programs.HelpProgram
-import app.projx.programs.HereProgram
-import app.projx.programs.ReadmeProgram
-import app.projx.programs.FindProgram
-import app.projx.programs.ListProgram
-import app.projx.programs.SetProgram
-import app.projx.programs.WhereProgram
+import app.projx.programs.*
 
 class ProjxRegister {
     private val programs = HashMap<String, CliProgram>()
@@ -19,7 +9,6 @@ class ProjxRegister {
     init {
         add("help", HelpProgram())
         add("create", CreateProgram())
-        add("dir", DirProgram())
         add("where", WhereProgram())
         add("readme", ReadmeProgram())
         add("here", HereProgram())
@@ -28,6 +17,10 @@ class ProjxRegister {
         add("set", SetProgram())
         add("code", CodeProgram())
         add("list", ListProgram())
+        add("git", GitProgram())
+        add("home", HomeProgram())
+        add("goto", GoToProgram())
+        add("android", AndroidProgram())
     }
 
     private fun add(name: String, program: CliProgram) {

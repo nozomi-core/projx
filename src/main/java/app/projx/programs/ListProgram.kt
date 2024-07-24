@@ -2,11 +2,11 @@ package app.projx.programs
 
 import app.projx.core.CliContext
 import app.projx.core.CliProgram
-import app.projx.core.database.projects.ProjectRepository
+import app.projx.core.database.repo.ProjectRepository
 
 class ListProgram: CliProgram {
     override fun execute(context: CliContext, args: Array<String>) {
-        ProjectRepository.all(context) { results ->
+        ProjectRepository.all { results ->
             while(results.next()) {
                 val codename = results.getString("codename")
                 val title = results.getString("title")

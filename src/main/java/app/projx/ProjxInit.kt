@@ -7,9 +7,7 @@ import java.io.File
 fun projxInit(context: CliContext) {
     val initFile = File("${context.srcDir.dir}/data")
     if(!initFile.exists()) {
-        //Init app here
         initFile.mkdir()
-
-        Database.init(context)
     }
+    Database.init(context)
 }
