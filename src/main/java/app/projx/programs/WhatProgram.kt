@@ -9,7 +9,7 @@ import app.projx.core.database.repo.VarsRepository
 class WhatProgram: CliProgram {
     override fun execute(context: CliContext, args: Array<String>) {
         val currentProjectPath = VarsRepository.queryKey(VarKeys.CURRENT_PROJECT_PATH)
-        val projectId = ProjectRepository.geProjectByProjectId(currentProjectPath)
+        val projectId = ProjectRepository.geProjectIdByPath(currentProjectPath)
         println(projectId)
     }
 }

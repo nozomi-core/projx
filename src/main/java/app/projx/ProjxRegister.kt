@@ -27,6 +27,10 @@ class ProjxRegister {
         add("dev", DevProgram())
         add("local", LocalProgram())
         add("note", NoteProgram())
+        add("todo", TodoProgram())
+        add("tasks", TasksProgram())
+        add("done", DoneProgram())
+        add("doing", DoingProgram())
     }
 
     private fun add(name: String, program: CliProgram) {

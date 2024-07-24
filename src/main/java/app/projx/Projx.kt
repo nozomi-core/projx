@@ -16,9 +16,14 @@ fun main(args: Array<String>) {
     if(args.getOrNull(0) == "shell" || args.isEmpty()) {
         while(isRunning) {
             print("pro >> ")
-            val shellArgs = readLine()!!.split("\\s+".toRegex()).toMutableList().toTypedArray()
+            val shellArgs = readLine()!!.split("\\s+".toRegex()).toMutableList().apply {
+                //be lenient about if they type pro while in shell, can remove it
+                if(this.getOrNull(0) == "pro")
+                    removeAt(0)
+            }.toTypedArray()
 
-            val doExit = shellArgs.getOrNull(0) == "exit"
+            val doExit = arrayOf("e", "exit").contains(shellArgs.getOrNull(0))
+
             if(doExit) {
                 isRunning = false
             } else {

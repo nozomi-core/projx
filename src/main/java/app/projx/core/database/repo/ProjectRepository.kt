@@ -55,7 +55,7 @@ object ProjectRepository {
         return future.get(10, TimeUnit.SECONDS)
     }
 
-    fun geProjectByProjectId(projectPath: String): String {
+    fun geProjectIdByPath(projectPath: String): String {
         val future = CompletableFuture<String>()
 
         Database.useStatement("select * from projects where ${Columns.PATH} = ?") { stm ->

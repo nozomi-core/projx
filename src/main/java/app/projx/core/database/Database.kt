@@ -23,7 +23,7 @@ object Database {
 
     fun useStatement(sql: String, callback: (PreparedStatement) -> Unit) {
         useConnection {
-            val preparedStatement = it.prepareStatement(sql)
+            val preparedStatement = it.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)
             callback(preparedStatement)
             preparedStatement.close()
         }
@@ -39,5 +39,6 @@ object Database {
     private fun initCreateTables(smt: Statement) {
         smt.execute("CREATE TABLE projects(id INTEGER PRIMARY KEY AUTOINCREMENT, codename TEXT, title TEXT, description TEXT, path TEXT UNIQUE ON CONFLICT IGNORE, status TEXT);")
         smt.execute("CREATE TABLE vars(key TEXT PRIMARY KEY ON CONFLICT REPLACE, value TEXT);")
+        smt.execute("CREATE TABLE todo(id INTEGER PRIMARY KEY AUTOINCREMENT, project_id TEXT, item TEXT, status TEXT);")
     }
 }
