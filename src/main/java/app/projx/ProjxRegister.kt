@@ -21,6 +21,9 @@ class ProjxRegister {
         add("home", HomeProgram())
         add("goto", GoToProgram())
         add("android", AndroidProgram())
+        add("swap", SwapProgram())
+        add("what", WhatProgram())
+        add("drop", DropProgram())
     }
 
     private fun add(name: String, program: CliProgram) {

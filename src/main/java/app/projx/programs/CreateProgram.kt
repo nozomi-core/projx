@@ -3,6 +3,7 @@ package app.projx.programs
 import app.projx.core.CliContext
 import app.projx.core.CliProgram
 import app.projx.core.database.repo.ProjectRepository
+import app.projx.core.database.repo.ProjectStatus
 
 class CreateProgram: CliProgram {
     override fun execute(context: CliContext, args: Array<String>) {
@@ -13,6 +14,6 @@ class CreateProgram: CliProgram {
         print("Description:")
         val description = readLine() ?: ""
 
-        ProjectRepository.insert(args[1], title, description, context.cwd.workingDir)
+        ProjectRepository.insert(args[1], title, description, context.cwd.workingDir, ProjectStatus.ACTIVE)
     }
 }

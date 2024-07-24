@@ -37,7 +37,7 @@ object Database {
     }
 
     private fun initCreateTables(smt: Statement) {
-        smt.execute("CREATE TABLE projects(id INTEGER PRIMARY KEY AUTOINCREMENT, codename TEXT, title TEXT, description TEXT, path TEXT UNIQUE ON CONFLICT IGNORE);")
+        smt.execute("CREATE TABLE projects(id INTEGER PRIMARY KEY AUTOINCREMENT, codename TEXT, title TEXT, description TEXT, path TEXT UNIQUE ON CONFLICT IGNORE, status TEXT);")
         smt.execute("CREATE TABLE vars(key TEXT PRIMARY KEY ON CONFLICT REPLACE, value TEXT);")
     }
 }
