@@ -24,6 +24,9 @@ class ProjxRegister {
         add("swap", SwapProgram())
         add("what", WhatProgram())
         add("drop", DropProgram())
+        add("dev", DevProgram())
+        add("local", LocalProgram())
+        add("note", NoteProgram())
     }
 
     private fun add(name: String, program: CliProgram) {
