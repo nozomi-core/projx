@@ -32,7 +32,13 @@ class BookProgram: CliProgram {
 
     private fun doBookList(context: CliContext, args: Array<String>) {
         val bookFile = getBookFile(context, args[1])
-        println(bookFile.readText())
+
+        bookFile.readLines().forEach { line ->
+            if(line.contains("::end", true)) {
+                return println(".. (More content hidden)")
+            }
+            println(line)
+        }
     }
 
     private fun getBookFile(context: CliContext, name: String): File {
