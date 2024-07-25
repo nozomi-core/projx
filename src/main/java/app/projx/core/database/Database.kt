@@ -7,7 +7,6 @@ import java.sql.PreparedStatement
 import java.sql.Statement
 
 object Database {
-    private const val VERSION = 1
     private lateinit var dbContext: CliContext
 
     fun init(context: CliContext) {
@@ -43,7 +42,7 @@ object Database {
         smt.execute("CREATE TABLE todo(id INTEGER PRIMARY KEY AUTOINCREMENT, project_id TEXT, item TEXT, status TEXT, type TEXT);")
 
         //create projx table and insert db_version
-        smt.execute("CREATE TABLE __projx(key TEXT PRIMARY KEY ON CONFLICT REPLACE, value TEXT);")
-        smt.execute("INSERT INTO __projx(key, value) VALUES ('db_version', '${VERSION}');")
+        smt.execute("CREATE TABLE __projx_int(key TEXT PRIMARY KEY ON CONFLICT REPLACE, value INTEGER);")
+        smt.execute("INSERT INTO __projx_int(key, value) VALUES ('db_version', 1);")
     }
 }
