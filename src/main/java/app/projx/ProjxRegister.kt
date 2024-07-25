@@ -31,6 +31,9 @@ class ProjxRegister {
         add("tasks", TasksProgram())
         add("done", DoneProgram())
         add("doing", DoingProgram())
+        add("source", SourceProgram())
+        add("book", BookProgram())
+        add("books", BooksProgram())
     }
 
     private fun add(name: String, program: CliProgram) {

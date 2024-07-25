@@ -5,9 +5,14 @@ import app.projx.core.database.Database
 import java.io.File
 
 fun projxInit(context: CliContext) {
-    val initFile = File("${context.srcDir.dir}/data")
+    createSourceDirIfNotExists(context, "data")
+    createSourceDirIfNotExists(context, "data/books")
+    Database.init(context)
+}
+
+fun createSourceDirIfNotExists(context: CliContext, path: String) {
+    val initFile = File("${context.srcDir.dir}/$path")
     if(!initFile.exists()) {
         initFile.mkdir()
     }
-    Database.init(context)
 }
