@@ -35,6 +35,7 @@ class ProjxRegister {
         add("book", BookProgram())
         add("books", BooksProgram())
         add("page", PageProgram())
+        add("idea", IdeaProgram())
     }
 
     private fun add(name: String, program: CliProgram) {

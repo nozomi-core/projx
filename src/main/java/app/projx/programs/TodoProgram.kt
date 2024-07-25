@@ -14,10 +14,11 @@ class TodoProgram: CliProgram {
         val currentProjectPath = VarsRepository.queryKey(VarKeys.CURRENT_PROJECT_PATH)
         val projectId = ProjectRepository.geProjectIdByPath(currentProjectPath)
 
-        Database.useStatement("insert into todo(project_id, item, status) values (?, ?, ?);") { smt ->
+        Database.useStatement("insert into todo(project_id, item, status, type) values (?, ?, ?, ?);") { smt ->
             smt.setString(1, projectId)
             smt.setString(2, todoItem)
             smt.setString(3, "active")
+            smt.setString(4, "task")
 
             smt.executeUpdate()
             val id = smt.generatedKeys.getLong(1)
